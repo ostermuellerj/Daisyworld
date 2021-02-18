@@ -1,2 +1,3 @@
 # Daisyworld
  
+![Icosphere](icosphere.png)
