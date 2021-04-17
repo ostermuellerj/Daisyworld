@@ -1,5 +1,5 @@
 # Daisyworld
-A 3D implementation of Andrew Watson's Daisyworld sim in Processing (WORK IN PROGRESS).
+A 3D implementation of [Andrew Watson's Daisyworld](https://en.wikipedia.org/wiki/Daisyworld) in Processing (WORK IN PROGRESS).
  
 | ![Icosphere](icosphere.png) |
 | :-:|
