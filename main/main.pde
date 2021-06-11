@@ -4,13 +4,10 @@ PeasyCam cam;
 Daisyworld dw;
 
 float inc;
-Boolean doRotate = false;
+Boolean doRotate = true;
 
 float sw=15;
 
-// number of spaces = 20*4^(n),
-// where n=startSize and n∈{0,+inf},
-// although performance drops at n>6.
 int startSize = 0;
 
 // initial number of daisies: 
@@ -29,8 +26,8 @@ void setup () {
 	println("Number of white daisies: " + dw.wDaisies.size());
 	cam = new PeasyCam(this, 100);	
 
-	size(900, 900, P3D);
-	// fullScreen(P3D);
+	// size(900, 900, P3D);
+	fullScreen(P3D);
 	colorMode(HSB);
 	// frameRate(10);
 
@@ -42,12 +39,12 @@ void draw () {
 	// background(140, 140, 100);
 	background(0);
 	// background(50+100*sin(2*inc));	
-	
+
 	// run the daisyworld
 	pushMatrix();
 		// slight constant rotation
 		if(doRotate) {
-			inc += 0.1;
+			inc += 0.01;
 			rotate(inc);
 		}
 		dw.run();
@@ -57,7 +54,7 @@ void draw () {
 	cam.beginHUD();
 	cam.endHUD();
 
-	if(doRotate) save(nf(inc, 2, 5) + ".png");
+	// if(doRotate) save(nf(inc, 2, 5) + ".png");
 	if(inc>PI) exit();
 }
 
@@ -95,15 +92,19 @@ void keyPressed() {
 	} 
 	// add a single black daisy
 	else if (key == '1') {
-		dw.add(0, new PVector(-1, -1));
+		// dw.addDaisy(0, new PVector(-1, -1));
+		dw.addDaisy(0, int(random(dw.emptySpaces.size())));
 	} 
 	// add a single white daisy
 	else if (key == '2') {
-		dw.add(1, new PVector(-1, -1));
+		// dw.addDaisy(1, new PVector(-1, -1));
+		dw.addDaisy(1, int(random(dw.emptySpaces.size())));
 	} 
 	// add many daisies of each color
 	else if (key == '3') {
-		for(int i=0; i<sq(startSize); i++)
-			dw.add((int)random(2), new PVector(-1, -1));
+		for(int i=0; i<sq(startSize); i++) {
+			// dw.addDaisy((int)random(2), int(random(dw.emptySpaces.size())));
+			dw.addDaisy(1, int(random(dw.spaces.size())));
+		}
 	}
 }

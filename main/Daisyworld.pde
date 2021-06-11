@@ -9,7 +9,7 @@ class Daisyworld {
 	// white daisies
 	ArrayList<Daisy> wDaisies;
 	// all available spaces		
-	ArrayList<PVector> emptySpaces;
+	ArrayList<Space> emptySpaces;
 	// all spaces
 	ArrayList<Space> spaces;
 
@@ -26,19 +26,27 @@ class Daisyworld {
 	Daisyworld (int s, int b, int w) {
 		density = s;
 		buildSpaces();
-		emptySpaces = (ArrayList)spaces.clone();
+		emptySpaces = new ArrayList<Space>(spaces);
 		daisies = new ArrayList<Daisy>();
 		bDaisies = new ArrayList<Daisy>();
 		wDaisies = new ArrayList<Daisy>();
 
 		//add black daisies
 		for(int i=0; i<b; i++) {
-			this.add(0, new PVector(-1, -1));
+			this.addDaisy(0, spaces.indexOf(random(emptySpaces.size())));
+			// this.addDaisy(0, i);
+			
+			// old
+			// this.addDaisy(0, new PVector(-1, -1));
 		}
 
 		//add white daisies
 		for(int i=0; i<w; i++) {
-			this.add(1, new PVector(-1, -1));
+			this.addDaisy(1, spaces.indexOf(random(emptySpaces.size())));
+			// this.addDaisy(1, i);
+
+			//old
+			// this.addDaisy(1, new PVector(-1, -1));
 		}
 	}
 
@@ -53,7 +61,7 @@ class Daisyworld {
 		// if density = 0, normalize points but don't subdivide,
 		// otherwise, subdivide.
 		for(int i=0; i<density; i++) {
-			println("des: "+density);
+			// println("des: "+density);
 			ArrayList<Space> newSpaces = new ArrayList<Space>();
 			for(Space s : spaces) {
 
@@ -330,9 +338,10 @@ class Daisyworld {
 		type = 0: black
 		type = 1: white
 	*/
-	Daisy add (int type, PVector p) {
-		Daisy d = new Daisy(-1, -1);
-
+	Daisy addDaisy (int type, int id) {
+	// Daisy addDaisy (int type, PVector p) {
+		// Daisy d = new Daisy(-1, -1);
+		Daisy d = new Daisy(-1);
 		//if diceroll, add daisy next to an existing daisy of same type
 		// debug: "random(1) > 0.0" 
 		// if(random(1)>0.0) {
@@ -346,16 +355,31 @@ class Daisyworld {
 		// } 
 
 		if(type==0) {
-			d = new BDaisy((int)p.x, (int)p.y);
+			d = new BDaisy(id);
+			// d = new BDaisy((int)p.x, (int)p.y);
 			bDaisies.add(d);
 			numBlack++;
-			println("BDaisy added");
+			println("BDaisy added"+id);
 		} else if(type==1) {
-			d = new WDaisy((int)p.x, (int)p.y);
+			d = new WDaisy(id);
+			// d = new WDaisy((int)p.x, (int)p.y);
 			wDaisies.add(d);
 			numWhite++;
-			println("WDaisy added");
+			println("WDaisy added"+id);
 		}
+
+		// old
+		// if(type==0) {
+		// 	d = new BDaisy((int)p.x, (int)p.y);
+		// 	bDaisies.addDaisy(d);
+		// 	numBlack++;
+		// 	println("BDaisy added");
+		// } else if(type==1) {
+		// 	d = new WDaisy((int)p.x, (int)p.y);
+		// 	wDaisies.addDaisy(d);
+		// 	numWhite++;
+		// 	println("WDaisy added");
+		// }
 		
 		daisies.add(d);
 		emptySpaces.remove(d.loc);

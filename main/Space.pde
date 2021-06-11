@@ -51,46 +51,45 @@ class Space {
 		// rainbow pattern
 		float theta = atan2(c.y, c.x);
 		float phi = atan2(c.y, c.z);		
-		stroke((200*inc+(50*sin(inc)+100)*sin(phi+inc)*sin(theta+inc))%255, 120, 200, 180);
+		stroke((200*inc+(50*sin(inc)+100)*sin(phi+inc)*sin(theta+inc))%255, 120, 200, 30);
 		
 		// draw tri verts[0]-verts[1] verts[1]-verts[2] verts[0]-verts[2]
 		// DEBUG
-		if(random(1)>0.999){
-				o=int((random(18)+o)%19);
-		}
-		Space u = dw.spaces.get(o);
-		if(this==u) {
-			if(random(1)>0.97){
-				// println("space ID: "+o,
-				// "space.n1 ID: "+dw.spaces.indexOf(u.n1), 
-				// "space.n1.n1 ID: "+dw.spaces.indexOf(u.n1.n1));
-			}
-			fill(50, 255, 255, 80);
-			beginShape();
-				vertex(verts[0].x,verts[0].y,verts[0].z);
-				vertex(verts[1].x,verts[1].y,verts[1].z);
-				vertex(verts[2].x,verts[2].y,verts[2].z);
-			endShape(CLOSE);
+		// line(c.x,c.y,c.z,
+		// 	n1.c.x,n1.c.y,n1.c.z);
+		// if(random(1)>0.999){
+		// 		o=int((random(18)+o)%19);
+		// }
+		// Space u = dw.spaces.get(o);
+		// if(this==u) {
+		// 	if(random(1)>0.97){
+		// 		// println("space ID: "+o,
+		// 		// "space.n1 ID: "+dw.spaces.indexOf(u.n1), 
+		// 		// "space.n1.n1 ID: "+dw.spaces.indexOf(u.n1.n1));
+		// 	}
+		// 	fill(50, 255, 255, 80);
+		// 	beginShape();
+		// 		vertex(verts[0].x,verts[0].y,verts[0].z);
+		// 		vertex(verts[1].x,verts[1].y,verts[1].z);
+		// 		vertex(verts[2].x,verts[2].y,verts[2].z);
+		// 	endShape(CLOSE);
 
-			beginShape();
-				vertex(n1.verts[0].x,n1.verts[0].y,n1.verts[0].z);
-				vertex(n1.verts[1].x,n1.verts[1].y,n1.verts[1].z);
-				vertex(n1.verts[2].x,n1.verts[2].y,n1.verts[2].z);
-			endShape(CLOSE);
+		// 	beginShape();
+		// 		vertex(n1.verts[0].x,n1.verts[0].y,n1.verts[0].z);
+		// 		vertex(n1.verts[1].x,n1.verts[1].y,n1.verts[1].z);
+		// 		vertex(n1.verts[2].x,n1.verts[2].y,n1.verts[2].z);
+		// 	endShape(CLOSE);
 
-			beginShape();
-				vertex(n1.n1.verts[0].x,n1.n1.verts[0].y,n1.n1.verts[0].z);
-				vertex(n1.n1.verts[1].x,n1.n1.verts[1].y,n1.n1.verts[1].z);
-				vertex(n1.n1.verts[2].x,n1.n1.verts[2].y,n1.n1.verts[2].z);
-			endShape(CLOSE);
-		}
+		// 	beginShape();
+		// 		vertex(n1.n1.verts[0].x,n1.n1.verts[0].y,n1.n1.verts[0].z);
+		// 		vertex(n1.n1.verts[1].x,n1.n1.verts[1].y,n1.n1.verts[1].z);
+		// 		vertex(n1.n1.verts[2].x,n1.n1.verts[2].y,n1.n1.verts[2].z);
+		// 	endShape(CLOSE);
+		// }
 
-		// line(verts[0].x, verts[0].y, verts[0].z, verts[1].x, verts[1].y, verts[1].z);
-		// line(verts[1].x, verts[1].y, verts[1].z, verts[2].x, verts[2].y, verts[2].z);
-		// line(verts[0].x, verts[0].y, verts[0].z, verts[2].x, verts[2].y, verts[2].z);
-
-		line(c.x,c.y,c.z,
-			n1.c.x,n1.c.y,n1.c.z);
+		line(verts[0].x, verts[0].y, verts[0].z, verts[1].x, verts[1].y, verts[1].z);
+		line(verts[1].x, verts[1].y, verts[1].z, verts[2].x, verts[2].y, verts[2].z);
+		line(verts[0].x, verts[0].y, verts[0].z, verts[2].x, verts[2].y, verts[2].z);
 
 		// displayCentroid();
 		// drawNeighborVectors();
