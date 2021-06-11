@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class main extends PApplet {
+public class main_grid extends PApplet {
 
 
 
@@ -384,7 +384,7 @@ class Daisyworld {
 }
   public void settings() { 	fullScreen(P3D); }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "main" };
+    String[] appletArgs = new String[] { "--present", "--window-color=#666666", "--stop-color=#cccccc", "main_grid" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {

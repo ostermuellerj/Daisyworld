@@ -6,6 +6,8 @@ Daisyworld dw;
 float inc;
 Boolean doRotate = false;
 
+float sw=15;
+
 // number of spaces = 20*4^(n),
 // where n=startSize and n∈{0,+inf},
 // although performance drops at n>6.
@@ -14,6 +16,10 @@ int startSize = 0;
 // initial number of daisies: 
 int startNumBlack = 0;
 int startNumWhite = 0; 
+
+int start;
+//debug Space.display()
+int o = 10;
 
 void setup () {
 
@@ -26,6 +32,9 @@ void setup () {
 	size(900, 900, P3D);
 	// fullScreen(P3D);
 	colorMode(HSB);
+	// frameRate(10);
+
+	start=millis();
 }
 
 void draw () {
@@ -33,18 +42,23 @@ void draw () {
 	// background(140, 140, 100);
 	background(0);
 	// background(50+100*sin(2*inc));	
-	inc += 0.001;
-
+	
 	// run the daisyworld
 	pushMatrix();
 		// slight constant rotation
-		if(doRotate) rotate(inc);
+		if(doRotate) {
+			inc += 0.1;
+			rotate(inc);
+		}
 		dw.run();
 	popMatrix();
 
 	// HUD
 	cam.beginHUD();
 	cam.endHUD();
+
+	if(doRotate) save(nf(inc, 2, 5) + ".png");
+	if(inc>PI) exit();
 }
 
 void keyPressed() {
@@ -53,16 +67,31 @@ void keyPressed() {
 		startSize++;
 		println(startSize);
 		dw = new Daisyworld(startSize, startNumBlack, startNumWhite);
+
+		// sw-=5;
+		// stroke(sw/30*255%255, 180, 255, 150);
+		// strokeWeight(sw);
 	}
 	// increment daisyworld size down
 	else if (keyCode == DOWN) {
 		startSize = max(0, startSize-1);
 		println(startSize);
 		dw = new Daisyworld(startSize, startNumBlack, startNumWhite);
+
+		// sw+=5;
+		// stroke(sw/30*255%255, 180, 255, 150);
+		// strokeWeight(sw);
 	} 
 	// restart sim with same initial parameters
 	else if (key == 'r') {
 		dw = new Daisyworld(startSize, startNumBlack, startNumWhite);
+	}
+	// else if (key == 'b') {
+	// 	background(255);
+	// 	strokeWeight(sw);
+	// } 
+	else if (key == 'k') {
+		doRotate=true;
 	} 
 	// add a single black daisy
 	else if (key == '1') {

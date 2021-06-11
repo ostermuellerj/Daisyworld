@@ -25,7 +25,7 @@ float inc;
 Boolean doRotate = false;
 
 // number of spaces = 20*4^(n),
-// where n=startSize and n∈{0,+inf},
+// where n=startSize and n\u2208{0,+inf},
 // although performance drops at n>6.
 int startSize = 0;
 
@@ -521,7 +521,6 @@ class Space {
 
 	public void display() {
 		stroke(255);
-
 		// rainbow pattern
 		// float theta = atan2(c.y, c.x);
 		// float phi = atan2(c.y, c.z);		
@@ -532,8 +531,8 @@ class Space {
 		line(v2.x, v2.y, v2.z, v3.x, v3.y, v3.z);
 		line(v1.x, v1.y, v1.z, v3.x, v3.y, v3.z);
 
-		// displayCentroid();
-		drawNeighborVectors();
+		displayCentroid();
+		// drawNeighborVectors();
 	}
 
 	public void displayCentroid() {
@@ -615,7 +614,7 @@ class Space {
 }
   public void settings() { 	size(900, 900, P3D); }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "main" };
+    String[] appletArgs = new String[] { "--present", "--window-color=#666666", "--stop-color=#cccccc", "main" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {
