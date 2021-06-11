@@ -44,7 +44,7 @@ void draw () {
 	pushMatrix();
 		// slight constant rotation
 		if(doRotate) {
-			inc += 0.01;
+			inc += 0.005;
 			rotate(inc);
 		}
 		dw.run();
@@ -55,7 +55,7 @@ void draw () {
 	cam.endHUD();
 
 	// if(doRotate) save(nf(inc, 2, 5) + ".png");
-	if(inc>PI) exit();
+	// if(inc>PI) exit();
 }
 
 void keyPressed() {
