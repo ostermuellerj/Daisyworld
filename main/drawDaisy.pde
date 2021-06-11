@@ -1,9 +1,9 @@
 void drawDaisy(float h, float r, float c) {
 	// float h = 100;
 	// float r = 40;
-	float numPetals = 17;
+	float numPetals = 9;
 	// float petalWidth = 0.5*TWO_PI*r/numPetals;
-	float petalWidth = 10;
+	float petalWidth = r*1.5;
 
 	//draw stem
 	stroke(255);

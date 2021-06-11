@@ -103,8 +103,8 @@ void keyPressed() {
 	// add many daisies of each color
 	else if (key == '3') {
 		for(int i=0; i<sq(startSize); i++) {
-			// dw.addDaisy((int)random(2), int(random(dw.emptySpaces.size())));
-			dw.addDaisy(1, int(random(dw.spaces.size())));
+			dw.addDaisy((int)random(2), int(random(dw.emptySpaces.size())));
+			// dw.addDaisy(1, int(random(dw.spaces.size())));
 		}
 	}
 }
