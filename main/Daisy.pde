@@ -40,9 +40,9 @@ class BDaisy extends Daisy {
 	void display () {
 		// println("BDaisy display");
 		fill(0, 0, 0, 255*(age/1000));
-		stroke(60, 100, 255, min(150*(age/5000), 150));
-		// noStroke();
-		strokeWeight(1);
+		// stroke(60, 100, 255, min(150*(age/5000), 150));
+		noStroke();
+		// strokeWeight(1);
 		// dw.drawQuad(loc, 0.5);
 		beginShape();
 		try {
@@ -71,7 +71,7 @@ class BDaisy extends Daisy {
 	 		rotateY(phi);
 	 		rotateX(theta);
 			pushMatrix();		
-	 		drawDaisy(20, 5, dist(0,0,0,space.c.x,space.c.y,space.c.z));
+	 		drawDaisy(10, 15, dist(0,0,0,space.c.x,space.c.y,space.c.z));
 	 		popMatrix();			
 	 	popMatrix();
 		noFill();
@@ -86,9 +86,9 @@ class WDaisy extends Daisy {
 
 	void display () {
 		fill(0, 0, 255, 255*(age/1000));
-		stroke(60, 100, 255, min(150*(age/5000), 150));
-		// noStroke();
-		strokeWeight(1);
+		// stroke(60, 100, 255, min(150*(age/5000), 150));
+		noStroke();
+		// strokeWeight(1);
 		// dw.drawQuad(loc, 0.5);
 		beginShape();
 		// try {
@@ -118,7 +118,7 @@ class WDaisy extends Daisy {
 	 		rotateY(phi);
 	 		rotateX(theta);
 			pushMatrix();		
-	 		drawDaisy(20, 5, dist(0,0,0,space.c.x,space.c.y,space.c.z));
+	 		drawDaisy(10, 10, dist(0,0,0,space.c.x,space.c.y,space.c.z));
 	 		popMatrix();			
 	 	popMatrix();
 

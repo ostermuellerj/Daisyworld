@@ -3,7 +3,7 @@ void drawDaisy(float h, float r, float c) {
 	// float r = 40;
 	float numPetals = 9;
 	// float petalWidth = 0.5*TWO_PI*r/numPetals;
-	float petalWidth = r*1.5;
+	float petalWidth = r/4;
 
 	//draw stem
 	stroke(255);
@@ -16,8 +16,9 @@ void drawDaisy(float h, float r, float c) {
 			translate(0, 0, h);
 
 			//draw petals
-			strokeWeight(3);
-			stroke(170, 40, 230, 100);
+			noStroke();
+			// strokeWeight(3);
+			// stroke(170, 40, 230, 100);
 			// fill(170, 20, 255, 255);
 			for(int i=0; i<numPetals; i++) {
 				pushMatrix();
@@ -47,10 +48,10 @@ void drawDaisy(float h, float r, float c) {
 			//draw disc
 			translate(0, 0, 1.3);
 			stroke(40, 200, 255, 255);
-			strokeWeight(10);
+			strokeWeight(r);
 			fill(40, 200, 255, 255);
 			ellipse(0, 0, r/3, r/3);
-			strokeWeight(2);
+			strokeWeight(r/5);
 		popMatrix();
 		noFill();
 		beginShape();

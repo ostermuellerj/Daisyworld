@@ -36,15 +36,15 @@ void setup () {
 
 void draw () {
 	// soft blue 
-	// background(140, 140, 100);
-	background(0);
+	background(140, 140, 100);
+	// background(0);
 	// background(50+100*sin(2*inc));	
 
 	// run the daisyworld
 	pushMatrix();
 		// slight constant rotation
 		if(doRotate) {
-			inc += 0.005;
+			inc += 0.002;
 			rotate(inc);
 		}
 		dw.run();

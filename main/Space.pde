@@ -51,6 +51,7 @@ class Space {
 		// rainbow pattern
 		float theta = atan2(c.y, c.x);
 		float phi = atan2(c.y, c.z);		
+		strokeWeight(2);
 		stroke((200*inc+(50*sin(inc)+100)*sin(phi+inc)*sin(theta+inc))%255, 120, 200, 30);
 		
 		// draw tri verts[0]-verts[1] verts[1]-verts[2] verts[0]-verts[2]
@@ -67,12 +68,13 @@ class Space {
 		// 		// "space.n1 ID: "+dw.spaces.indexOf(u.n1), 
 		// 		// "space.n1.n1 ID: "+dw.spaces.indexOf(u.n1.n1));
 		// 	}
-		// 	fill(50, 255, 255, 80);
-		// 	beginShape();
-		// 		vertex(verts[0].x,verts[0].y,verts[0].z);
-		// 		vertex(verts[1].x,verts[1].y,verts[1].z);
-		// 		vertex(verts[2].x,verts[2].y,verts[2].z);
-		// 	endShape(CLOSE);
+			fill(255/3, 140, 100, 255);
+			beginShape();
+				vertex(verts[0].x,verts[0].y,verts[0].z);
+				vertex(verts[1].x,verts[1].y,verts[1].z);
+				vertex(verts[2].x,verts[2].y,verts[2].z);
+			endShape(CLOSE);
+			noFill();
 
 		// 	beginShape();
 		// 		vertex(n1.verts[0].x,n1.verts[0].y,n1.verts[0].z);
@@ -90,6 +92,7 @@ class Space {
 		line(verts[0].x, verts[0].y, verts[0].z, verts[1].x, verts[1].y, verts[1].z);
 		line(verts[1].x, verts[1].y, verts[1].z, verts[2].x, verts[2].y, verts[2].z);
 		line(verts[0].x, verts[0].y, verts[0].z, verts[2].x, verts[2].y, verts[2].z);
+
 
 		// displayCentroid();
 		// drawNeighborVectors();
